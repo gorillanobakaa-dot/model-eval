@@ -1,0 +1,16 @@
+# Credentials, never committed. registry.example.json is the template.
+registry.json
+
+# Live run state
+sweep.pid
+sweep.log
+sandboxes/
+
+# Local sweep lists (sweep.example.txt is the template)
+sweep.txt
+sweep_working.txt
+sweep_finalists.txt
+sweep_ramp.txt
+
+__pycache__/
+*.pyc

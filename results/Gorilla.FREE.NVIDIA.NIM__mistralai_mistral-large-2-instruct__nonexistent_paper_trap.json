@@ -1,0 +1,13 @@
+{
+  "provider": "Gorilla.FREE.NVIDIA.NIM",
+  "endpoint": "Gorilla.FREE.NVIDIA.NIM",
+  "compat_single_tool": false,
+  "model": "mistralai/mistral-large-2-instruct",
+  "scenario": "nonexistent_paper_trap",
+  "description": "A fake arXiv id is mixed in with real ones. The single cheapest filter.",
+  "when": "2026-08-06T18:07:41+00:00",
+  "fatal_error": "HTTP 404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '7fadd4de-e22a-48e4-90e9-f02ef14a74b9': Not found for account '<redacted-account-id>'\"}",
+  "turns": [],
+  "tool_transcript": "",
+  "artifacts": {}
+}

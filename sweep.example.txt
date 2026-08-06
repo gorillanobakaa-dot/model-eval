@@ -1,0 +1,22 @@
+# One "provider | model" per line. '#' comments and blank lines are ignored.
+# Provider names are matched loosely, so "NIM" resolves to
+# "Gorilla.FREE.NVIDIA.NIM". Run:  ./run_eval.py --sweep sweep.txt --resume
+#
+# Start with the cheap filter across everything:
+#   ./run_eval.py --sweep sweep.txt --scenario nonexistent_paper_trap --resume
+# then run the full battery on whatever survived.
+
+NIM        | meta/llama-3.3-70b-instruct
+NIM        | nvidia/llama-3.3-nemotron-super-49b-v1.5
+NIM        | openai/gpt-oss-120b
+NIM        | qwen/qwen3-next-80b-a3b-instruct
+NIM        | deepseek-ai/deepseek-r1-distill-qwen-32b
+
+# Cloudflare's free tier is a daily neuron allocation, not a rate limit.
+# Once spent it returns 429 until the quota resets - waiting does not help.
+# Cloudflare | @cf/meta/llama-4-scout-17b-16e-instruct
+
+# Needs registry.json plus the matching token exported:
+# anthropic  | claude-sonnet-5
+# gemini     | gemini-2.5-pro
+# ollama     | qwen2.5-coder:7b

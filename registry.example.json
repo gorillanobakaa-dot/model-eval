@@ -1,0 +1,112 @@
+{
+  "_comment": [
+    "Copy to registry.json and fill in. Providers listed here override any",
+    "auto-discovered from ~/.config/gorilla-opencode/config.json; anything not",
+    "listed is still picked up from there, so you only need entries for the",
+    "providers gorilla-opencode does not already hold.",
+    "",
+    "kind: openai | anthropic | gemini   (which wire format the provider speaks)",
+    "auth: bearer | x-api-key | query | none",
+    "",
+    "Prefer key_env over key: the token is then read from the environment at run",
+    "time, so rotating it never means editing a file and a token cannot be",
+    "committed by accident. key_env wins if the variable is set.",
+    "",
+    "OAuth providers (gemini-oauth, antigravity) issue short-lived access tokens.",
+    "Export the current token into the named variable before a sweep."
+  ],
+
+  "providers": [
+    {
+      "name": "nvidia-nim",
+      "kind": "openai",
+      "base": "https://integrate.api.nvidia.com/v1",
+      "key_env": "NVIDIA_API_KEY",
+      "auth": "bearer"
+    },
+    {
+      "name": "cloudflare",
+      "kind": "openai",
+      "base": "https://api.cloudflare.com/client/v4/accounts/YOUR_ACCOUNT_ID/ai/v1",
+      "key_env": "CLOUDFLARE_API_TOKEN",
+      "auth": "bearer"
+    },
+    {
+      "name": "groq",
+      "kind": "openai",
+      "base": "https://api.groq.com/openai/v1",
+      "key_env": "GROQ_API_KEY",
+      "auth": "bearer"
+    },
+    {
+      "name": "cerebras",
+      "kind": "openai",
+      "base": "https://api.cerebras.ai/v1",
+      "key_env": "CEREBRAS_API_KEY",
+      "auth": "bearer"
+    },
+    {
+      "name": "xai",
+      "kind": "openai",
+      "base": "https://api.x.ai/v1",
+      "key_env": "XAI_API_KEY",
+      "auth": "bearer"
+    },
+    {
+      "name": "deepseek",
+      "kind": "openai",
+      "base": "https://api.deepseek.com/v1",
+      "key_env": "DEEPSEEK_API_KEY",
+      "auth": "bearer"
+    },
+    {
+      "name": "mistral",
+      "kind": "openai",
+      "base": "https://api.mistral.ai/v1",
+      "key_env": "MISTRAL_API_KEY",
+      "auth": "bearer"
+    },
+    {
+      "name": "together",
+      "kind": "openai",
+      "base": "https://api.together.xyz/v1",
+      "key_env": "TOGETHER_API_KEY",
+      "auth": "bearer"
+    },
+    {
+      "name": "openrouter",
+      "kind": "openai",
+      "base": "https://openrouter.ai/api/v1",
+      "key_env": "OPENROUTER_API_KEY",
+      "auth": "bearer"
+    },
+    {
+      "name": "ollama",
+      "kind": "openai",
+      "base": "http://localhost:11434/v1",
+      "auth": "none"
+    },
+    {
+      "name": "anthropic",
+      "kind": "anthropic",
+      "base": "https://api.anthropic.com",
+      "key_env": "ANTHROPIC_API_KEY",
+      "auth": "x-api-key"
+    },
+    {
+      "name": "gemini",
+      "kind": "gemini",
+      "base": "https://generativelanguage.googleapis.com/v1beta",
+      "key_env": "GEMINI_API_KEY",
+      "auth": "query"
+    },
+    {
+      "name": "gemini-oauth",
+      "kind": "gemini",
+      "base": "https://generativelanguage.googleapis.com/v1beta",
+      "key_env": "GEMINI_OAUTH_TOKEN",
+      "auth": "bearer",
+      "disabled": true
+    }
+  ]
+}

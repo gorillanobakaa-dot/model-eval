@@ -1,0 +1,13 @@
+{
+  "provider": "Gorilla.FREE.NVIDIA.NIM",
+  "endpoint": "Gorilla.FREE.NVIDIA.NIM",
+  "compat_single_tool": false,
+  "model": "meta/llama-3.2-3b-instruct",
+  "scenario": "nonexistent_paper_trap",
+  "description": "A fake arXiv id is mixed in with real ones. The single cheapest filter.",
+  "when": "2026-08-06T17:24:39+00:00",
+  "fatal_error": "TimeoutError: The read operation timed out",
+  "turns": [],
+  "tool_transcript": "",
+  "artifacts": {}
+}

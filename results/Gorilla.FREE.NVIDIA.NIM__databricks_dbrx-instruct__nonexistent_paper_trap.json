@@ -1,0 +1,13 @@
+{
+  "provider": "Gorilla.FREE.NVIDIA.NIM",
+  "endpoint": "Gorilla.FREE.NVIDIA.NIM",
+  "compat_single_tool": false,
+  "model": "databricks/dbrx-instruct",
+  "scenario": "nonexistent_paper_trap",
+  "description": "A fake arXiv id is mixed in with real ones. The single cheapest filter.",
+  "when": "2026-08-06T18:18:23+00:00",
+  "fatal_error": "HTTP 404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '3d6c2ff8-8bfc-4d10-8fd0-b7337288e869': Not found for account '<redacted-account-id>'\"}",
+  "turns": [],
+  "tool_transcript": "",
+  "artifacts": {}
+}

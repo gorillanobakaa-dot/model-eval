@@ -1,0 +1,13 @@
+{
+  "provider": "Gorilla.FREE.NVIDIA.NIM",
+  "endpoint": "Gorilla.FREE.NVIDIA.NIM",
+  "compat_single_tool": false,
+  "model": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+  "scenario": "nonexistent_paper_trap",
+  "description": "A fake arXiv id is mixed in with real ones. The single cheapest filter.",
+  "when": "2026-08-06T17:38:40+00:00",
+  "fatal_error": "HTTP 404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '84bf12ff-edbd-4435-baea-0fa6a7453d2e': Not found for account '<redacted-account-id>'\"}",
+  "turns": [],
+  "tool_transcript": "",
+  "artifacts": {}
+}
