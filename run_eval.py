@@ -101,7 +101,12 @@ SINGLE_TOOL_ERROR = re.compile(r"single tool.?calls? at once|only supports singl
                                re.I)
 
 
-def run_scenario(provider, model, scenario, profanity, max_tool_iters=8,
+# A multi-paper research task legitimately needs many rounds: search, then fetch
+# each paper, then write. At 8 both finalists were cut off mid-work with an empty
+# final reply, which the grader then scored as a clean pass because a reply that
+# says nothing cannot say anything unsourced. Truncation must be visible, and the
+# ceiling must be high enough that hitting it means something.
+def run_scenario(provider, model, scenario, profanity, max_tool_iters=24,
                  single_tool=False):
     slug = f"{model.replace('/', '_')}__{scenario.name}"
     sandbox = SANDBOXES / slug
@@ -173,6 +178,7 @@ def run_scenario(provider, model, scenario, profanity, max_tool_iters=8,
             ],
             "malformed_tool_syntax": malformed,
             "api_roundtrips": iters,
+            "truncated": iters >= max_tool_iters,
             "probes": [{"kind": p.kind, "value": p.value, "axis": p.axis, "note": p.note}
                        for p in turn.probes],
         })

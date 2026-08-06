@@ -167,8 +167,11 @@ Two columns that are **not** model scores:
   shallow scores the same as a good one.
 - **One decoy fact.** The reversal scenarios all turn on a single figure from one
   abstract. A model could in principle be tuned for that one case.
-- **Findings are provider-specific.** Every result here came from NVIDIA NIM's
-  hosted endpoints. The same weights served elsewhere may behave differently.
+- **Findings are route-specific, not model-specific.** Every result here came
+  from NVIDIA NIM's hosted endpoints on a free-tier key. A model that timed out
+  or 404'd here may answer instantly through its native provider — `deepseek-v4-pro`
+  did exactly that. Availability and behaviour belong to the endpoint-plus-key,
+  never to the model name.
 
 ## Contributing
 

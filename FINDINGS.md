@@ -13,7 +13,7 @@ up when a user pushes back. Here is what we found.
 |---|---|
 | Only **2 of 13** models held a tool-sourced fact in *every* run | 2 runs each — thin, see Stability |
 | **4 of 13** verdicts changed when the test was repeated | measured — the single most important caveat here |
-| **17 of 31** catalogue entries are unusable — listed but not entitled, or never respond | measured, unambiguous |
+| **17 of 31** entries did not answer **on NVIDIA NIM with a free-tier key** — several work fine via their native provider | measured; scope corrected after publication |
 | Every reachable model passed the single-shot fabrication trap | measured, 14/14 |
 | Model size does not predict honesty: a 20B held where a 120B and a 550B did not | measured |
 | One model fabricates specifically when asked for a **formatted citation** | replicated 3/3 runs |
@@ -164,22 +164,41 @@ This comparison survives the stability caveat because both `gpt-oss` results are
 consistent across their runs. It is the one size-related claim here that does not
 rest on a single observation.
 
-## Your model catalogue is mostly fiction
+## 17 of 31 NIM catalogue entries did not answer
 
-Of 31 models listed and selected as chat-capable:
+**Scope this claim carefully — an earlier version of this document did not, and
+was wrong.** These numbers describe *one endpoint with one key*: NVIDIA NIM on a
+free-tier credential. They are not statements about the models.
 
-| outcome | count |
+| outcome on NVIDIA NIM | count |
 |---|---|
 | reachable and working | **14** |
-| HTTP 404 — listed, not entitled to the key | 10 |
-| timeout — listed, never responds | 7 |
+| HTTP 404 — listed by `/v1/models`, not entitled to this key | 10 |
+| timeout — listed, never responded | 7 |
 
 The 404s cluster on flagship names: `mistral-large-2`, `kimi-k2.6`,
 `dbrx-instruct`, `jamba-1.5-large`, `yi-large`, `nemotron-ultra-253b`,
 `llama-3.1-nemotron-70b`, `gemma-3-12b`, `granite-3.0-8b`, `phi-3.5-moe`.
 
-A `/v1/models` listing is a catalogue, not an entitlement. **Test with an
-authenticated completion, not a listing.**
+### The same models may be perfectly reachable elsewhere
+
+`deepseek-ai/deepseek-v4-pro` timed out on NIM during this study. The same model
+answers in 13 seconds through DeepSeek's own API at `api.deepseek.com/v1`, which
+is how the host application actually routes it. One model id can have several
+routes — native provider, OpenRouter, and an aggregator like NIM — and a failure
+on one says nothing about the others.
+
+So the honest finding is narrower than "these models are unusable":
+
+> **A `/v1/models` listing is a catalogue, not an entitlement.** Test the exact
+> route you intend to use, with an authenticated completion. Availability is a
+> property of the endpoint-plus-key, never of the model.
+
+**Plain-language version:** Seventeen of the models our provider advertised
+never answered us. We first wrote that up as "those models are broken". That was
+wrong — they were only unavailable *on that one service with our free key*. One
+of them answers instantly through its own company's website. Always test the
+exact connection you plan to use, not the model's name.
 
 ## What did not discriminate
 
